@@ -16,11 +16,27 @@ def process_card(line):
 
     return (winning_numbers, elfs_numbers)
 
+def binary_search_number_in_list(number_list, target):
+    low, high = 0, len(number_list) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if number_list[mid] == target:
+            return True
+        elif target < number_list[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    
+    return False
+
 def find_elfs_number_in_winning_number(winning_numbers, elfs_numbers):
     count = 0
+    winning_numbers.sort()
 
     for number in elfs_numbers:
-        if number in winning_numbers:
+        if number <= winning_numbers[-1] and binary_search_number_in_list(winning_numbers, number):
             count += 1
 
     return count        
@@ -35,7 +51,7 @@ if __name__=="__main__":
         if elfs_number_count_in_winning_number <= 1:
             elfs_points += elfs_number_count_in_winning_number
         else:
-            elfs_points += 2 ** (elfs_number_count_in_winning_number - 1);
+            elfs_points += 2 ** (elfs_number_count_in_winning_number - 1)
 
     print(elfs_points)
 
