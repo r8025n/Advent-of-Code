@@ -1,8 +1,28 @@
 input_file = open('input.txt', 'r')
 input_lines = input_file.readlines()
 
-INT_MAX = 99999999999
-source_vs_difference_map = {}
+map_of_maps = {1: {}, 2: {}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}}
+map_number = 0
+location_list = []
+
+def recursive_approach(level, seed_list):
+    for val in seed_list:
+        list_for_next_level = []
+        in_range = False
+        for rrange, difference in map_of_maps[level].items():
+            if val >= rrange[1] and val <= rrange[2]:
+                list_for_next_level.append(val + difference)
+                in_range = True
+                
+        if in_range == False:
+            list_for_next_level.append(val)
+            in_range = False
+        if (level + 1) <= 7:
+            recursive_approach(level + 1, list_for_next_level)
+        else:
+            location_list.append(min(list_for_next_level))
+
+    return
 
 if __name__=="__main__":
     seed_line = input_lines[0]
@@ -14,26 +34,15 @@ if __name__=="__main__":
         line = input_lines[i]
 
         if line.isspace():
-            print("seeds_before",seeds)
-            # print(source_vs_difference_map)
-            min_value = INT_MAX
-
-            for i in range(0, len(seeds)):
-                for rrange, difference in source_vs_difference_map.items():
-                    if seeds[i] >= rrange[1] and seeds[i] <= rrange[2]:
-                        min_value = min(seeds[i] + difference, min_value)
-
-                if min_value != INT_MAX:
-                    seeds[i] = min_value
-                    min_value = INT_MAX
-            # print("seeds_after",seeds)
-            source_vs_difference_map = {}
+            map_number += 1
         elif line[0].isnumeric() == False:
             continue
         else:
             destination, source, number_range = [int(x) for x in line.split()]
             source_range = (i, source, source + number_range) #i is added to make the key unique
             difference_between_destination_and_source = destination - source
-            source_vs_difference_map[source_range] = difference_between_destination_and_source
-    # print(seeds)
-    print(min(seeds))
+            map_of_maps[map_number][source_range] = difference_between_destination_and_source
+
+    recursive_approach(1, seeds)
+
+    print(min(location_list))
