@@ -1,23 +1,11 @@
 package main
 
 import(
-	"strings"
-	"strconv"
 	"sort"
 	"math"
 )
 
-func solvePart1(input []string) int{
-	var list1, list2 []int
-	for _, line := range(input) {
-		line = strings.Trim(line, " ")
-		locIds := strings.Fields(line)
-		locId1, _ := strconv.Atoi(locIds[0])
-		locId2, _ := strconv.Atoi(locIds[1])
-		list1 = append(list1, locId1)
-		list2 = append(list2, locId2)
-	}
-
+func solvePart1(list1, list2 []int) int{
 	sort.Ints(list1)
 	sort.Ints(list2)
 
