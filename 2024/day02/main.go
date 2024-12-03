@@ -22,7 +22,6 @@ func main() {
 	var reports [][]int
 	for scanner.Scan() {
 		line := scanner.Text()
-		// fmt.Println(line)
 		line = strings.Trim(line, " ")
 		splittedLine := strings.Fields(line)
 		var report []int
@@ -34,14 +33,12 @@ func main() {
 		reports = append(reports, report)
 	}
 
-	fmt.Println(reports)
-
 	if err := scanner.Err(); err != nil {
 		fmt.Println("Error reading file:", err)
 	}
 
 	outputPart1 := solvePart1(reports)
-	// outputPart2 := solvePart2(list1, list2)
+	outputPart2 := solvePart2(reports)
 	fmt.Println("Solution to part1: ", outputPart1)
-	// fmt.Println("Solution to part2: ", outputPart2)
+	fmt.Println("Solution to part2: ", outputPart2)
 }
