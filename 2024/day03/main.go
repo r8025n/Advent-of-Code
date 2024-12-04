@@ -33,7 +33,7 @@ func main() {
 	}
 
 	outputPart1 := solvePart1(corruptedMemories)
-	// outputPart2 := solvePart2(reports)
+	outputPart2 := solvePart2(corruptedMemories)
 	fmt.Println("Solution to part1: ", outputPart1)
-	// fmt.Println("Solution to part2: ", outputPart2)
+	fmt.Println("Solution to part2: ", outputPart2)
 }
