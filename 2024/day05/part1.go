@@ -5,24 +5,12 @@ import(
 	"strconv"
 )
 
-func solvePart1(orderingRules, updates []string) int{
+func solvePart1(updates []string, orderingRuleMap map[string][]string) int{
 	output := 0
 	middlePages := []string{}
-	orderingRuleMap := make(map[string][]string)
 	var updateMap map[string]bool
 
-	for _, item := range orderingRules {
-		parts := strings.Split(item, "|")
-		before, after := parts[0], parts[1]
-
-		if _, exists := orderingRuleMap[before]; exists {
-			orderingRuleMap[before] = append(orderingRuleMap[before], after)
-		}else{
-			orderingRuleMap[before] = append([]string{}, after)
-		}
-	}
-
-	continueToOuterLoop:
+	outerLoop:
 	for _, update := range updates {
 		updateMap = make(map[string]bool)
 		pages := strings.Split(update, ",")
@@ -31,7 +19,7 @@ func solvePart1(orderingRules, updates []string) int{
 			if _, orderRuleExists := orderingRuleMap[page]; orderRuleExists {
 				for _, item := range orderingRuleMap[page] {
 					if _, pageUpdated := updateMap[item]; pageUpdated {
-						continue continueToOuterLoop;
+						continue outerLoop;
 					}
 				}
 			}
