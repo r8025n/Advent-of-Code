@@ -35,3 +35,21 @@ func hasLeftMappedArea(x, y, X, Y int) bool {
 
 	return false
 }
+
+func generateVisitedDirectionsMap(X, Y int) [][]map[rune]bool {
+	visitedDirectionsMap := make ([][]map[rune]bool, X)
+	for i := range visitedDirectionsMap {
+		visitedDirectionsMap[i] = make([]map[rune]bool, Y)
+
+		for j := range visitedDirectionsMap[i] {
+			visitedDirectionsMap[i][j] = map[rune]bool{
+				'^': false,
+			 	'v': false,
+				'<': false,
+				'>': false,
+			}
+		}
+	}
+
+	return visitedDirectionsMap
+}
