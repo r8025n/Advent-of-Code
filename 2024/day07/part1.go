@@ -1,6 +1,6 @@
 package main
 
-func recur(eqnValues []int, target, cumulativeVal, i int) bool {
+func recurSolvePart1(eqnValues []int, target, cumulativeVal, i int) bool {
 	if i == len(eqnValues) {
 		if cumulativeVal == target {
 			return true
@@ -9,8 +9,8 @@ func recur(eqnValues []int, target, cumulativeVal, i int) bool {
 		return false
 	}
 
-	opt1 := recur(eqnValues, target, cumulativeVal + eqnValues[i], i + 1)
- 	opt2 := recur(eqnValues, target, cumulativeVal * eqnValues[i], i + 1)
+	opt1 := recurSolvePart1(eqnValues, target, cumulativeVal + eqnValues[i], i + 1)
+ 	opt2 := recurSolvePart1(eqnValues, target, cumulativeVal * eqnValues[i], i + 1)
 
 	return opt1 || opt2
 }
@@ -22,7 +22,7 @@ func solvePart1(testValueSet []int, equationValueSet[][]int) int{
 		testValue := testValueSet[t]
 		equationValues := equationValueSet[t]
 
-		if recur(equationValues, testValue, equationValues[0], 1) {
+		if recurSolvePart1(equationValues, testValue, equationValues[0], 1) {
 			output += testValue
 		}
 	}
