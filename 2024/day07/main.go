@@ -39,7 +39,7 @@ func main() {
 	}
 
 	outputPart1 := solvePart1(testValueSet, equationValueSet)
-	// outputPart2 := solvePart2(input2)
+	outputPart2 := solvePart2(testValueSet, equationValueSet)
 	fmt.Println("Solution to part1: ", outputPart1)
-	// fmt.Println("Solution to part2: ", outputPart2)
+	fmt.Println("Solution to part2: ", outputPart2)
 }
