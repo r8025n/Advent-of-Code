@@ -9,6 +9,10 @@ func recurSolvePart1(eqnValues []int, target, cumulativeVal, i int) bool {
 		return false
 	}
 
+	if cumulativeVal > target {
+		return false
+	}
+
 	opt1 := recurSolvePart1(eqnValues, target, cumulativeVal + eqnValues[i], i + 1)
  	opt2 := recurSolvePart1(eqnValues, target, cumulativeVal * eqnValues[i], i + 1)
 
