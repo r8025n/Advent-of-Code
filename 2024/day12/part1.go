@@ -13,8 +13,8 @@ func bfsSolve(input [][]rune, visited [][]int, i, j int) int {
 	area, perimeter := 1, 0
 	input[i][j] = 0
 	visited[i][j] = 1
-
 	q.Enqueue([]int{i, j})
+
 	for !q.Empty() {
 		topItem := q.Dequeue()
 		x, y := topItem[0], topItem[1]

@@ -26,8 +26,8 @@ func main() {
 		input = append(input, []rune(line))
 	}
 
-	outputPart1 := solvePart1(input)
-	// outputPart2 := solvePart2(input[0])
-	fmt.Println("Solution to part1: ", outputPart1)
-	// fmt.Println("Solution to part2: ", outputPart2)
+	// outputPart1 := solvePart1(input)
+	outputPart2 := solvePart2(input)
+	// fmt.Println("Solution to part1: ", outputPart1)
+	fmt.Println("Solution to part2: ", outputPart2)
 }
