@@ -4,27 +4,12 @@ import(
 	"fmt"
 	"strings"
 	"io/ioutil"
-	"strconv"
-	"regexp"
 )
 
 type PrizeData struct {
 	A []int
 	B []int
 	Target []int
-}
-
-func extractIntegerData(str string) []int {
-	re := regexp.MustCompile(`\d+`)
-	matches := re.FindAllString(str, -1)
-
-	data := []int{}
-	for _, item := range matches {
-		num, _ := strconv.Atoi(item)
-		data = append(data, num)
-	}
-
-	return data
 }
 
 func main() {
