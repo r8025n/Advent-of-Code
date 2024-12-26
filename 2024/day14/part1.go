@@ -4,7 +4,7 @@ import(
 	// "fmt"
 )
 
-var seconds, lenX, lenY = 100, 103, 101
+const seconds, lenX, lenY = 100, 103, 101
 
 func calculateFuturePosition(data RobotData) []int {
 	x, y := data.Position[0], data.Position[1]
