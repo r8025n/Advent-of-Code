@@ -26,10 +26,6 @@ func dfsSolve(input []string, visited [][]int, x, y, cost int, dirChange string)
 		return
 	}
 
-	if x < 0 || y < 0 || x >= len(input) || y >= len(input[0]) {
-		return
-	}
-
 	if input[x][y] == '#' {
 		return
 	}
